@@ -1,4 +1,3 @@
-Сатипов, [06/11/25 03:39]
 import psycopg2
 from contextlib import contextmanager
 from config import DATABASE_URL
