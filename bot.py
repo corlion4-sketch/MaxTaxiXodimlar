@@ -301,8 +301,8 @@ async def show_today_numbers(message: types.Message, state: FSMContext):
         text = f"📅 BUGUNGI OBZVON RO'YXATI ({today})\n\n"
         text += f"{region} ✅ Xodim: {employee_name} ✅\n📋 RAQAMLAR RO'YXATI:\n\n"
         
-        for i, row in enumerate(numbers, 1):
-            text += f"{i}. {row['phone']} — {row['comment']}\n\n"
+        for i, (phone, comment, reg) in enumerate(numbers, 1):
+            text += f"{i}. {phone} — {comment}\n\n"
     
     msg = await message.answer(text, reply_markup=get_numbers_menu())
     await save_message_id(user_id, msg.message_id, True)
@@ -420,8 +420,8 @@ async def show_today_pozivnoy(message: types.Message, state: FSMContext):
         text = f"📅 BUGUNGI QO'SHILGAN POZIVNOY RO'YXATI ({today})\n\n"
         text += f"{region} ✅ Xodim: {employee_name} ✅\n\n"
         
-        for i, row in enumerate(pozivnoylar, 1):
-            text += f"{i}. {row['pozivnoy_number']}\n"
+        for i, (number, reg) in enumerate(pozivnoylar, 1):
+            text += f"{i}. {number}\n"
     
     msg = await message.answer(text, reply_markup=get_pozivnoy_menu())
     await save_message_id(user_id, msg.message_id, True)
